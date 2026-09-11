@@ -2,8 +2,7 @@ name: Raid Boss Watcher
 
 on:
   schedule:
-    # Runs every 30 minutes from 08:00 through 22:00 (10 PM) UTC daily.
-    - cron: "* 8-22 * * *"
+    - cron: "* * * *"
   workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
 
 permissions:
