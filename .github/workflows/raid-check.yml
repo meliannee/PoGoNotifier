@@ -2,8 +2,8 @@ name: Raid Boss Watcher
 
 on:
   schedule:
-    # Runs every 15 minutes. GitHub may delay this slightly under load.
-    - cron: "*/1 * * * *"
+    # Runs every 30 minutes from 08:00 through 22:00 (10 PM) UTC daily.
+    - cron: "*/30 8-22 * * *"
   workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
 
 permissions:
