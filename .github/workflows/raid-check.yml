@@ -2,7 +2,7 @@ name: Raid Boss Watcher
 
 on:
   schedule:
-    - cron: "* * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch: {}   # lets you trigger it manually from the Actions tab
 
 permissions:
