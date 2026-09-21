@@ -1,4 +1,4 @@
-name: Raid Boss Watcher Daily
+name: Raid Boss Watcher
  
 on:
   workflow_dispatch: {}
@@ -21,9 +21,9 @@ jobs:
       - name: Run raid watcher
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          # Combine both watchlists into one run so there's a single
+          # All watchlists combined into one run so there's a single
           # watch_raids.py invocation and a single seen.json to persist.
-          WATCH_POKEMON: ${{ format('{0},{1}', vars.WATCH_POKEMON, vars.WATCH_POKEMON_SHADOW) }}
+          WATCH_POKEMON: ${{ format('{0},{1},{2},{3},{4}', vars.WATCH_POKEMON, vars.WATCH_POKEMON_SHADOW, vars.WATCH_POKEMON_MEGA, vars.WATCH_POKEMON_DYNAMAX, vars.WATCH_POKEMON_GIGANTAMAX) }}
         run: python3 watch_raids.py
  
       - name: Persist seen.json
@@ -34,4 +34,3 @@ jobs:
           git diff --staged --quiet || git commit -m "Update seen.json [skip ci]"
           git pull --rebase --autostash
           git push
- 
