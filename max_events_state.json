@@ -1,0 +1,42 @@
+{
+  "max-mondays-2026-09-21": {
+    "name": "Dynamax Articuno, Zapdos, and Moltres during Max Monday",
+    "notified_start": true,
+    "notified_end": true
+  },
+  "max-mondays-2026-09-28": {
+    "name": "Dynamax Sobble during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "gigantamax-cinderace-max-battle-day-2026": {
+    "name": "Gigantamax Cinderace Max Battle Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-10-05": {
+    "name": "Dynamax Sizzlipede during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-10-12": {
+    "name": "Dynamax Rookidee during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-10-19": {
+    "name": "Dynamax Sneasel during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-battle-day-october-24-2026": {
+    "name": "Dynamax Max Battle Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-10-26": {
+    "name": "Dynamax Sableye during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  }
+}
