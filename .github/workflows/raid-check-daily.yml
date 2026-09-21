@@ -23,7 +23,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           # All watchlists combined into one run so there's a single
           # watch_raids.py invocation and a single seen.json to persist.
-          WATCH_POKEMON: ${{ format('{0},{1},{2}', vars.WATCH_POKEMON, vars.WATCH_POKEMON_SHADOW, vars.WATCH_POKEMON_MEGA}}
+          WATCH_POKEMON: ${{ format('{0},{1},{2}', vars.WATCH_POKEMON, vars.WATCH_POKEMON_SHADOW, vars.WATCH_POKEMON_MEGA)}}
         run: python3 watch_raids.py
  
       - name: Persist seen.json
