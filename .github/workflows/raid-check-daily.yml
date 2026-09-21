@@ -1,41 +1,37 @@
 name: Raid Boss Watcher Daily
-
+ 
 on:
   workflow_dispatch: {}
-
+ 
 permissions:
   contents: write
-
+ 
 jobs:
   check-raids:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
-      matrix:
-        include:
-          - watch_var: "WATCH_POKEMON"
-            seen_file: "seen.json"
-          - watch_var: "WATCH_POKEMON_SHADOW"
-            seen_file: "seen_shadow.json"
     steps:
       - uses: actions/checkout@v4
-
+ 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
+ 
       - name: Run raid watcher
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          WATCH_POKEMON: ${{ vars[matrix.watch_var] }}
-          SEEN_FILE: ${{ matrix.seen_file }}
+          # Combine both watchlists into one run so there's a single
+          # watch_raids.py invocation and a single seen.json to persist.
+          WATCH_POKEMON: ${{ format('{0},{1}', vars.WATCH_POKEMON, vars.WATCH_POKEMON_SHADOW) }}
         run: python3 watch_raids.py
-
-      - name: Persist seen file
+ 
+      - name: Persist seen.json
         run: |
           git config user.name "raid-notifier-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add ${{ matrix.seen_file }}
-          git diff --staged --quiet || git commit -m "Update ${{ matrix.seen_file }} [skip ci]"
+          git add seen.json
+          git diff --staged --quiet || git commit -m "Update seen.json [skip ci]"
           git pull --rebase --autostash
           git push
+ 
