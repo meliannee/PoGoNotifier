@@ -263,5 +263,85 @@
     "name": "Master League and Mega Catch Cup: Great League Edition | Twilight Trails",
     "notified_start": false,
     "notified_end": false
+  },
+  "mega-venusaur-in-mega-raids-september-2026": {
+    "name": "Mega Venusaur in Mega Raids",
+    "notified_start": true,
+    "notified_end": false
+  },
+  "zamazenta-hero-of-many-battles-in-5-star-raid-battles-september-2026": {
+    "name": "Zamazenta (Hero of Many Battles) in 5-star Raid Battles",
+    "notified_start": true,
+    "notified_end": false
+  },
+  "mega-malamar-in-mega-raids-september-2026": {
+    "name": "Mega Malamar in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "xurkitree-pheromosa-buzzwole-in-5-star-raid-battles-september-2026": {
+    "name": "Xurkitree, Pheromosa, and Buzzwole in 5-star Raid Battles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "shadow-thundurus-incarnate-forme-in-shadow-raids-september-2026": {
+    "name": "Shadow Thundurus (Incarnate Forme) in Shadow Raids",
+    "notified_start": true,
+    "notified_end": false
+  },
+  "mega-victreebel-in-mega-raids-september-2026": {
+    "name": "Mega Victreebel in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "xerneas-in-5-star-raid-battles-september-2026": {
+    "name": "Xerneas in 5-star Raid Battles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "mega-blastoise-in-mega-raids-october-2026": {
+    "name": "Mega Blastoise in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "yveltal-in-5-star-raid-battles-october-2026": {
+    "name": "Yveltal in 5-star Raid Battles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "dialga-in-5-star-raid-battles-october-2026": {
+    "name": "Dialga in 5-star Raid Battles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "mega-dragonite-in-mega-raids-october-2026": {
+    "name": "Mega Dragonite in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "mega-charizard-x-mega-charizard-y-in-mega-raids-october-2026": {
+    "name": "Mega Charizard X and Mega Charizard Y in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "palkia-in-5-star-raid-battles-october-2026": {
+    "name": "Palkia in 5-star Raid Battles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "shadow-landorus-incarnate-forme-in-shadow-raids-october-2026": {
+    "name": "Shadow Landorus (Incarnate Forme) in Shadow Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "giratina-origin-forme-in-5-star-raid-battles-october-2026": {
+    "name": "Giratina (Origin Forme) in 5-star Raid Battles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "mega-sableye-in-mega-raids-october-2026": {
+    "name": "Mega Sableye in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
   }
 }
