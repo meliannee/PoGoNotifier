@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Pokemon GO Max Mondays / Max Battles Watcher -> Discord notifier
+Pokemon GO Events Watcher -> Discord notifier
 
 Checks the community-run ScrapedDuck feed (scrapes LeekDuck.com, with
-permission - see https://github.com/bigfoott/ScrapedDuck) for events of
-type "max-mondays" and "max-battles", and posts a Discord webhook message
-when one of those events STARTS, and again when it ENDS.
+permission - see https://github.com/bigfoott/ScrapedDuck) for ALL events,
+and posts a Discord webhook message when one of them STARTS, and again
+when it ENDS.
 
 Designed to be run on a schedule (cron / Task Scheduler / GitHub Actions),
 once a day. It keeps a small state file (max_events_state.json) next to
@@ -33,10 +33,6 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = SCRIPT_DIR / "config.json"
 STATE_PATH = SCRIPT_DIR / "max_events_state.json"
 EVENTS_URL = "https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json"
-
-# The two event types we care about (see
-# https://github.com/bigfoott/ScrapedDuck/wiki/Events#list-of-event-types)
-WATCHED_TYPES = {"max-mondays", "max-battles"}
 
 
 def load_json(path, default):
@@ -156,7 +152,8 @@ def main():
         print(f"Failed to fetch event data: {e}")
         sys.exit(1)
 
-    watched = [e for e in events if e.get("eventType") in WATCHED_TYPES]
+    # Watch every event in the feed, regardless of eventType.
+    watched = events
 
     now = datetime.now(timezone.utc)
     state = load_json(STATE_PATH, {})
@@ -214,7 +211,7 @@ def main():
     save_json(STATE_PATH, state)
 
     if not notified_any:
-        print("No Max Monday / Max Battles start/end transitions this run.")
+        print("No event start/end transitions this run.")
 
 
 if __name__ == "__main__":
