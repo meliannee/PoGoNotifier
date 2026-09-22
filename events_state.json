@@ -12,12 +12,12 @@
   "pokemon-horizons-bonus-timed-research-2026": {
     "name": "Pok\u00e9mon Horizons Bonus Timed Research",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemon-horizons-the-series-celebration-event-2026": {
     "name": "Pok\u00e9mon Horizons: The Series Celebration Event 2026",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "raidhour20260923": {
     "name": "Xurkitree, Pheromosa, and Buzzwole Raid Hour",
@@ -341,6 +341,11 @@
   },
   "mega-sableye-in-mega-raids-october-2026": {
     "name": "Mega Sableye in Mega Raids",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "go-pass-october-2026": {
+    "name": "GO Pass: October",
     "notified_start": false,
     "notified_end": false
   }
