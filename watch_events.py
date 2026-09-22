@@ -10,11 +10,10 @@ https://github.com/bigfoott/ScrapedDuck):
    when a Pokemon from your watchlist (config.json / WATCH_POKEMON) is
    currently an active raid boss - any tier (Tier 1/3/5, Mega, Shadow).
 
-2. EVENTS (events.json): posts a start/end message for events in the
-   feed, EXCEPT eventType "raid-battles" and "raid-hours" (skipped
-   entirely - those are covered by the raid boss check above, or are too
-   frequent/local to be useful as calendar-style notices). Everything
-   else is routed by eventType:
+2. EVENTS (events.json): posts a start/end message for every event in
+   the feed, routed by eventType:
+     - "raid-battles" / "raid-hours"  -> DISCORD_WEBHOOK_URL (same
+                                          channel as the raid boss watch)
      - "max-mondays" / "max-battles"  -> DISCORD_WEBHOOK_URL_MAX
      - anything else                  -> DISCORD_WEBHOOK_URL_EVENTS
 
@@ -61,9 +60,9 @@ TIER_EMOJI = {
     "Shadow": "🌑 Shadow",
 }
 
-# Event feed eventType values that should never be posted to any channel
-# (raid-battles/raid-hours are already covered by the raid boss check).
-SKIPPED_EVENT_TYPES = {"raid-battles", "raid-hours"}
+# Event feed eventType values that go to the raid webhook (same channel as
+# the raid boss watchlist notifications) instead of the general events one.
+RAID_EVENT_TYPES = {"raid-battles", "raid-hours"}
 
 # Event feed eventType values that go to the "Max" webhook instead of the
 # general events one.
@@ -278,8 +277,8 @@ def build_event_embed(event, kind):
     }
 
 
-def check_events(config, webhook_max, webhook_events):
-    if not webhook_max and not webhook_events:
+def check_events(config, webhook_raids, webhook_max, webhook_events):
+    if not webhook_raids and not webhook_max and not webhook_events:
         return
 
     tz_name = os.environ.get("EVENT_TIMEZONE") or config.get("event_timezone")
@@ -303,10 +302,12 @@ def check_events(config, webhook_max, webhook_events):
 
     for event in events:
         event_type = event.get("eventType")
-        if event_type in SKIPPED_EVENT_TYPES:
-            continue
-
-        webhook_url = webhook_max if event_type in MAX_EVENT_TYPES else webhook_events
+        if event_type in RAID_EVENT_TYPES:
+            webhook_url = webhook_raids
+        elif event_type in MAX_EVENT_TYPES:
+            webhook_url = webhook_max
+        else:
+            webhook_url = webhook_events
         if not webhook_url:
             continue  # that destination isn't configured - skip quietly
 
@@ -378,7 +379,7 @@ def main():
         sys.exit(1)
 
     check_raid_bosses(config, webhook_raids)
-    check_events(config, webhook_max, webhook_events)
+    check_events(config, webhook_raids, webhook_max, webhook_events)
 
 
 if __name__ == "__main__":
