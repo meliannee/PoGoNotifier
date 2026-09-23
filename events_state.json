@@ -1,9 +1,4 @@
 {
-  "max-mondays-2026-09-21": {
-    "name": "Dynamax Articuno, Zapdos, and Moltres during Max Monday",
-    "notified_start": true,
-    "notified_end": true
-  },
   "gbl-twilight-trails_great-league_ultra-league-mega-edition_willpower-cup-great-league-edition": {
     "name": "Great League, Ultra League: Mega Edition, and Willpower Cup: Great League Edition | Twilight Trails",
     "notified_start": true,
@@ -21,7 +16,7 @@
   },
   "raidhour20260923": {
     "name": "Xurkitree, Pheromosa, and Buzzwole Raid Hour",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemonspotlighthour2026-09-24": {
