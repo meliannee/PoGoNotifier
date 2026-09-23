@@ -7,7 +7,7 @@
   "gbl-twilight-trails_great-league_ultra-league-mega-edition_willpower-cup-great-league-edition": {
     "name": "Great League, Ultra League: Mega Edition, and Willpower Cup: Great League Edition | Twilight Trails",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemon-horizons-bonus-timed-research-2026": {
     "name": "Pok\u00e9mon Horizons Bonus Timed Research",
@@ -46,7 +46,7 @@
   },
   "gbl-twilight-trails_ultra-league_master-league-mega-edition_retro-cup-great-league-edition": {
     "name": "Ultra League, Master League: Mega Edition, and Retro Cup: Great League Edition | Twilight Trails",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "raidhour20260930": {
@@ -267,21 +267,21 @@
   "mega-venusaur-in-mega-raids-september-2026": {
     "name": "Mega Venusaur in Mega Raids",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "zamazenta-hero-of-many-battles-in-5-star-raid-battles-september-2026": {
     "name": "Zamazenta (Hero of Many Battles) in 5-star Raid Battles",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "mega-malamar-in-mega-raids-september-2026": {
     "name": "Mega Malamar in Mega Raids",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "xurkitree-pheromosa-buzzwole-in-5-star-raid-battles-september-2026": {
     "name": "Xurkitree, Pheromosa, and Buzzwole in 5-star Raid Battles",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "shadow-thundurus-incarnate-forme-in-shadow-raids-september-2026": {
