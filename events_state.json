@@ -36,7 +36,7 @@
   },
   "choose-your-path-twilight-trails-2026": {
     "name": "Choose Your Path: Twilight Trails",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-09-28": {
