@@ -1,9 +1,4 @@
 {
-  "gbl-twilight-trails_great-league_ultra-league-mega-edition_willpower-cup-great-league-edition": {
-    "name": "Great League, Ultra League: Mega Edition, and Willpower Cup: Great League Edition | Twilight Trails",
-    "notified_start": true,
-    "notified_end": true
-  },
   "pokemon-horizons-bonus-timed-research-2026": {
     "name": "Pok\u00e9mon Horizons Bonus Timed Research",
     "notified_start": true,
@@ -341,6 +336,21 @@
   },
   "go-pass-october-2026": {
     "name": "GO Pass: October",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-go-tour-alola-kaohsiung-2027": {
+    "name": "Pok\u00e9mon GO Tour: Alola - Kaohsiung 2027",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-go-tour-alola-los-angeles-2027": {
+    "name": "Pok\u00e9mon GO Tour: Alola - Los Angeles 2027",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-go-tour-alola-global-2027": {
+    "name": "Pok\u00e9mon GO Tour: Alola - Global 2027",
     "notified_start": false,
     "notified_end": false
   }
