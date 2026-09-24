@@ -6,7 +6,7 @@
   },
   "pokemonspotlighthour2026-09-24": {
     "name": "Rattata Spotlight Hour",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "catch-mastery-phantump-2026": {
