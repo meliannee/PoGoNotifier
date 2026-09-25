@@ -244,16 +244,6 @@
     "notified_start": false,
     "notified_end": false
   },
-  "mega-venusaur-in-mega-raids-september-2026": {
-    "name": "Mega Venusaur in Mega Raids",
-    "notified_start": true,
-    "notified_end": true
-  },
-  "zamazenta-hero-of-many-battles-in-5-star-raid-battles-september-2026": {
-    "name": "Zamazenta (Hero of Many Battles) in 5-star Raid Battles",
-    "notified_start": true,
-    "notified_end": true
-  },
   "mega-malamar-in-mega-raids-september-2026": {
     "name": "Mega Malamar in Mega Raids",
     "notified_start": true,
@@ -346,6 +336,11 @@
   },
   "pokemon-x-adidas-2026": {
     "name": "adidas \u00d7 Pok\u00e9mon Timed Research",
+    "notified_start": true,
+    "notified_end": false
+  },
+  "sandile-hatch-day-2026": {
+    "name": "Sandile Hatch Day",
     "notified_start": false,
     "notified_end": false
   }
