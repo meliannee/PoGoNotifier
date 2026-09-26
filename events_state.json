@@ -356,7 +356,7 @@
   },
   "pokemon-go-city-safari-lisbon-2026": {
     "name": "Lisbon, Portugal - Pok\u00e9mon GO City Safari",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-go-city-safari-rio-de-janeiro-2026": {
