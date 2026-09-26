@@ -338,5 +338,30 @@
     "name": "Sandile Hatch Day",
     "notified_start": false,
     "notified_end": false
+  },
+  "pokemon-go-city-safari-brisbane-2026": {
+    "name": "Brisbane, Australia - Pok\u00e9mon GO City Safari",
+    "notified_start": true,
+    "notified_end": false
+  },
+  "pokemon-go-city-safari-marseille-2026": {
+    "name": "Marseille, France - Pok\u00e9mon GO City Safari",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-go-city-safari-munich-2026": {
+    "name": "Munich, Germany - Pok\u00e9mon GO City Safari",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-go-city-safari-lisbon-2026": {
+    "name": "Lisbon, Portugal - Pok\u00e9mon GO City Safari",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-go-city-safari-rio-de-janeiro-2026": {
+    "name": "Rio de Janeiro, Brazil - Pok\u00e9mon GO City Safari",
+    "notified_start": false,
+    "notified_end": false
   }
 }
