@@ -6,7 +6,7 @@
   },
   "catch-mastery-phantump-2026": {
     "name": "Phantump Catch Mastery",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "choose-your-path-twilight-trails-2026": {
@@ -346,12 +346,12 @@
   },
   "pokemon-go-city-safari-marseille-2026": {
     "name": "Marseille, France - Pok\u00e9mon GO City Safari",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-go-city-safari-munich-2026": {
     "name": "Munich, Germany - Pok\u00e9mon GO City Safari",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-go-city-safari-lisbon-2026": {
