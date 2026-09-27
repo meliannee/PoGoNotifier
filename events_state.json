@@ -342,12 +342,12 @@
   "pokemon-go-city-safari-marseille-2026": {
     "name": "Marseille, France - Pok\u00e9mon GO City Safari",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemon-go-city-safari-munich-2026": {
     "name": "Munich, Germany - Pok\u00e9mon GO City Safari",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemon-go-city-safari-lisbon-2026": {
     "name": "Lisbon, Portugal - Pok\u00e9mon GO City Safari",
