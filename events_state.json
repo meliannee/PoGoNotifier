@@ -1,9 +1,4 @@
 {
-  "catch-mastery-phantump-2026": {
-    "name": "Phantump Catch Mastery",
-    "notified_start": true,
-    "notified_end": true
-  },
   "choose-your-path-twilight-trails-2026": {
     "name": "Choose Your Path: Twilight Trails",
     "notified_start": true,
@@ -333,11 +328,6 @@
     "name": "Sandile Hatch Day",
     "notified_start": false,
     "notified_end": false
-  },
-  "pokemon-go-city-safari-brisbane-2026": {
-    "name": "Brisbane, Australia - Pok\u00e9mon GO City Safari",
-    "notified_start": true,
-    "notified_end": true
   },
   "pokemon-go-city-safari-marseille-2026": {
     "name": "Marseille, France - Pok\u00e9mon GO City Safari",
