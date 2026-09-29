@@ -41,7 +41,7 @@
   },
   "harvest-festival-2026": {
     "name": "Harvest Festival 2026: Applin Picking",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "harvest-festival-taken-over-2026": {
