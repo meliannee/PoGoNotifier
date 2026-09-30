@@ -12,7 +12,7 @@
   "gbl-twilight-trails_ultra-league_master-league-mega-edition_retro-cup-great-league-edition": {
     "name": "Ultra League, Master League: Mega Edition, and Retro Cup: Great League Edition | Twilight Trails",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "raidhour20260930": {
     "name": "Xerneas Raid Hour",
@@ -61,7 +61,7 @@
   },
   "gbl-twilight-trails_master-league_mega-color-cup-great-league-edition": {
     "name": "Master League and Mega Color Cup: Great League Edition | Twilight Trails",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "raidhour20261007": {
@@ -232,12 +232,12 @@
   "mega-malamar-in-mega-raids-september-2026": {
     "name": "Mega Malamar in Mega Raids",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "xurkitree-pheromosa-buzzwole-in-5-star-raid-battles-september-2026": {
     "name": "Xurkitree, Pheromosa, and Buzzwole in 5-star Raid Battles",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "shadow-thundurus-incarnate-forme-in-shadow-raids-september-2026": {
     "name": "Shadow Thundurus (Incarnate Forme) in Shadow Raids",
@@ -246,12 +246,12 @@
   },
   "mega-victreebel-in-mega-raids-september-2026": {
     "name": "Mega Victreebel in Mega Raids",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "xerneas-in-5-star-raid-battles-september-2026": {
     "name": "Xerneas in 5-star Raid Battles",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "mega-blastoise-in-mega-raids-october-2026": {
