@@ -31,7 +31,7 @@
   },
   "harvest-festival-taken-over-2026": {
     "name": "Harvest Festival: Taken Over",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-10-05": {
@@ -307,6 +307,36 @@
   "pokemon-tcg-30th-celebration": {
     "name": "Pok\u00e9mon TCG: 30th Celebration",
     "notified_start": true,
+    "notified_end": false
+  },
+  "minior-showers-orionids-2026": {
+    "name": "Minior Showers: Orionids 2026",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "minior-showers-leonids-2026": {
+    "name": "Minior Showers: Leonids 2026",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "minior-showers-geminids-2026": {
+    "name": "Minior Showers: Geminids 2026",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "minior-showers-eta-aquariids-2027": {
+    "name": "Minior Showers: Eta Aquariids 2027",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "minior-showers-southern-delta-aquariids-2027": {
+    "name": "Minior Showers: Southern Delta Aquariids 2027",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "minior-showers-perseids-2027": {
+    "name": "Minior Showers: Perseids 2027",
+    "notified_start": false,
     "notified_end": false
   }
 }
