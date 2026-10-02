@@ -1,9 +1,4 @@
 {
-  "lego-pokemon-go-2026": {
-    "name": "LEGO Stores and Pok\u00e9mon GO",
-    "notified_start": true,
-    "notified_end": true
-  },
   "pokemonspotlighthour2026-10-01": {
     "name": "Seedot Spotlight Hour",
     "notified_start": true,
@@ -336,6 +331,11 @@
   },
   "dynamax-uxie-mesprit-azelf-max-battle-day-2026": {
     "name": "Dynamax Uxie, Mesprit, and Azelf Max Battle Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-night-out-2026-twitch-drops": {
+    "name": "Twitch Drops for Pok\u00e9mon Night Out 2026",
     "notified_start": false,
     "notified_end": false
   }
