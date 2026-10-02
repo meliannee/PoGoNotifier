@@ -338,5 +338,10 @@
     "name": "Minior Showers: Perseids 2027",
     "notified_start": false,
     "notified_end": false
+  },
+  "dynamax-uxie-mesprit-azelf-max-battle-day-2026": {
+    "name": "Dynamax Uxie, Mesprit, and Azelf Max Battle Day",
+    "notified_start": false,
+    "notified_end": false
   }
 }
