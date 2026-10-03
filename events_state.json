@@ -6,7 +6,7 @@
   },
   "gigantamax-cinderace-max-battle-day-2026": {
     "name": "Gigantamax Cinderace Max Battle Day",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "harvest-festival-2026": {
