@@ -35,7 +35,7 @@ Please keep that attribution if you share this project.
    marker; this tells the script which timezone they are in. Without it, UTC is assumed.
 4. **Edit `config.json`** to pick your event types (see below).
 5. **Enable Actions** for the repository. The workflow runs every 15 minutes and
-   can also be started by hand from the Actions tab ("Run workflow").
+   can also be started by hand from the Actions tab ("Run workflow"). (I prefer to use https://cron-job.org/ to run the actions, which seems to be more accurate. I run this action once an hour.)
 
 > GitHub only runs scheduled workflows from the repository's **default branch**.
 > On this feature branch, start the workflow manually until you merge it.
