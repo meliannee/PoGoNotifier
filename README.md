@@ -1,8 +1,10 @@
 # PoGoNotifier (events only)
 Please note that this README was automatically written by AI. For any misinformation please inform me using github's Issues page.
 
+
 Posts a message to Discord when a Pokémon GO event **starts** and when it **ends**.
-You choose which event types you care about in `config.json`.
+You choose which event types you care about in `config.json`, and everything is
+sent to a single Discord webhook.
 
 This branch (`feature/only_notify_events`) only deals with events. There is no
 raid boss watchlist: regular raids and regular Max Battle listings are off by
@@ -17,23 +19,17 @@ Please keep that attribution if you share this project.
 | File | Purpose |
 |------|---------|
 | `watch_events.py` | The watcher. Fetches the events feed and posts to Discord. |
-| `config.json` | All settings: subscriptions, routing, timezone, webhook URLs. |
+| `config.json` | All settings: subscriptions, timezone, webhook URL. |
 | `events_state.json` | Remembers which start/end messages were already sent. Updated automatically. |
 | `.github/workflows/event-check.yml` | Runs the watcher every 15 minutes on GitHub Actions. |
 
 ## Setup
 
-1. **Create Discord webhooks.** In your Discord server: channel settings →
-   Integrations → Webhooks → New Webhook → copy the URL. You can use one, two or
-   three channels (see *Routing* below).
-2. **Add the webhook URLs as repository secrets** (Settings → Secrets and
-   variables → Actions → New repository secret):
-   - `DISCORD_WEBHOOK_URL` (raid hours / raid days)
-   - `DISCORD_WEBHOOK_URL_MAX` (Max Mondays / Max Battles)
-   - `DISCORD_WEBHOOK_URL_EVENTS` (all other events)
-
-   Any of them can be left out; events routed to a missing webhook are skipped.
-   Don't put real webhook URLs in `config.json` if the repository is public.
+1. **Create a Discord webhook.** In your Discord server: channel settings →
+   Integrations → Webhooks → New Webhook → copy the URL.
+2. **Add the URL as a repository secret** named `DISCORD_WEBHOOK_URL_EVENTS`
+   (Settings → Secrets and variables → Actions → New repository secret).
+   Don't put the real URL in `config.json` if the repository is public.
 3. **Optional:** add a repository variable `EVENT_TIMEZONE` (for example
    `Europe/Amsterdam`). Some events have local start/end times without a UTC
    marker; this tells the script which timezone they are in. Without it, UTC is assumed.
@@ -54,10 +50,8 @@ Please keep that attribution if you share this project.
 | `notify_unknown_event_types` | What to do with an event type that is not listed in `event_types`. `false` = ignore it, `true` = notify. The run output lists any unlisted types it saw. |
 | `keyword_override_types` | Event types that are switched off but may still let events through (default: `raid-battles`, `max-battles`). |
 | `keep_name_keywords` | If a type from `keyword_override_types` is `false`, events whose name contains one of these words are still sent (default: gigantamax, dynamax, max battle day, max monday). |
-| `raid_event_types` | Event types sent to the raid webhook. |
-| `max_event_types` | Event types sent to the Max webhook. |
 | `event_timezone` | IANA timezone name, e.g. `Europe/Amsterdam`. Empty = UTC. |
-| `discord_webhook_url`, `discord_webhook_url_max`, `discord_webhook_url_events` | Webhook URLs. Environment variables / secrets take priority. |
+| `discord_webhook_url_events` | The webhook every notification is sent to. The `DISCORD_WEBHOOK_URL_EVENTS` environment variable / secret takes priority. |
 
 Example: only get community days and raid hours, and ignore everything else:
 
@@ -70,14 +64,6 @@ Example: only get community days and raid hours, and ignore everything else:
   "notify_unknown_event_types": false
 }
 ```
-
-### Routing
-
-| eventType in… | Goes to |
-|---------------|---------|
-| `raid_event_types` | `DISCORD_WEBHOOK_URL` |
-| `max_event_types` | `DISCORD_WEBHOOK_URL_MAX` |
-| anything else | `DISCORD_WEBHOOK_URL_EVENTS` |
 
 ### Event type names
 
@@ -96,7 +82,7 @@ print(sorted({e["eventType"] for e in events}))
 ## Running locally
 
 ```bash
-export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+export DISCORD_WEBHOOK_URL_EVENTS="https://discord.com/api/webhooks/..."
 python watch_events.py
 ```
 
