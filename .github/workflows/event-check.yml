@@ -1,0 +1,54 @@
+name: Event check
+
+# Place this file at .github/workflows/event-check.yml
+#
+# Required repository secret (Settings -> Secrets and variables -> Actions):
+#   DISCORD_WEBHOOK_URL  the Discord webhook all subscribed events are sent to
+#
+# Optional repository variable:
+#   EVENT_TIMEZONE              e.g. Europe/Amsterdam (for events without a "Z" timestamp)
+#
+# Note: GitHub only runs scheduled (cron) workflows from the repository's
+# default branch. On any other branch, use "Run workflow" (workflow_dispatch).
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to commit events_state.json back to the repo
+
+concurrency:
+  group: event-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run event watcher
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EVENT_TIMEZONE: ${{ vars.EVENT_TIMEZONE }}
+        run: python watch_events.py
+
+      - name: Commit updated state
+        run: |
+          if git diff --quiet -- events_state.json; then
+            echo "No state changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add events_state.json
+          git commit -m "Update event state [skip ci]"
+          git push
