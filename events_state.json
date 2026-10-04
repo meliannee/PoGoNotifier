@@ -51,7 +51,7 @@
   },
   "world-space-week-2026": {
     "name": "World Space Week 2026",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-10-12": {
