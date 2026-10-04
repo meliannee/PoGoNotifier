@@ -1,29 +1,25 @@
 #!/usr/bin/env python3
 """
-Pokemon GO Watcher -> Discord notifier (raids + events, one script)
+Pokemon GO Watcher -> Discord notifier (events only)
 
-Two independent checks against the community-run ScrapedDuck feeds
-(scrapes LeekDuck.com, with permission - see
-https://github.com/bigfoott/ScrapedDuck):
+Checks the community-run ScrapedDuck events feed (scrapes LeekDuck.com, with
+permission - see https://github.com/bigfoott/ScrapedDuck) and posts a
+start/end message to Discord for every event type you are subscribed to.
 
-1. RAID BOSSES (raids.json): posts a message to DISCORD_WEBHOOK_URL only
-   when a Pokemon from your watchlist (config.json / WATCH_POKEMON) is
-   currently an active raid boss - any tier (Tier 1/3/5, Mega, Shadow).
+Everything configurable lives in config.json next to this script:
 
-2. EVENTS (events.json): posts a start/end message for every event in
-   the feed, routed by eventType:
-     - "raid-battles" / "raid-hours"  -> DISCORD_WEBHOOK_URL (same
-                                          channel as the raid boss watch)
-     - "max-mondays" / "max-battles"  -> DISCORD_WEBHOOK_URL_MAX
-     - anything else                  -> DISCORD_WEBHOOK_URL_EVENTS
+    event_types                  {"<eventType>": true/false, ...} subscriptions
+    notify_unknown_event_types   what to do with types not listed above
+    keyword_override_types       disabled types that may still let events through...
+    keep_name_keywords           ...when the event name contains one of these
+    event_timezone               IANA tz for events without a "Z" timestamp
+    discord_webhook_url_events   the single Discord webhook all events are sent to
 
-State is kept in two small files next to the script:
-  - seen.json          - raid boss watchlist state
-  - events_state.json  - event start/end transition state
+The webhook URL and the timezone can also be set via the environment variables
+DISCORD_WEBHOOK_URL_EVENTS and EVENT_TIMEZONE (these take priority over
+config.json). All subscribed events, whatever their type, go to that one webhook.
 
-Each section is independent: if one of the three webhook URLs isn't
-configured, that section is skipped (with a warning) rather than
-aborting the whole run.
+State is kept next to the script in events_state.json (start/end transitions).
 
 Designed to run on a schedule (cron / Task Scheduler / GitHub Actions).
 
@@ -36,8 +32,8 @@ import json
 import os
 import sys
 import urllib.request
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 
 try:
     from zoneinfo import ZoneInfo
@@ -46,27 +42,9 @@ except ImportError:  # pragma: no cover - very old Python
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = SCRIPT_DIR / "config.json"
-SEEN_PATH = SCRIPT_DIR / "seen.json"
 EVENTS_STATE_PATH = SCRIPT_DIR / "events_state.json"
 
-RAIDS_URL = "https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/raids.json"
 EVENTS_URL = "https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json"
-
-TIER_EMOJI = {
-    "Tier 1": "⭐",
-    "Tier 3": "⭐⭐⭐",
-    "Tier 5": "⭐⭐⭐⭐⭐",
-    "Mega": "💠 Mega",
-    "Shadow": "🌑 Shadow",
-}
-
-# Event feed eventType values that go to the raid webhook (same channel as
-# the raid boss watchlist notifications) instead of the general events one.
-RAID_EVENT_TYPES = {"raid-battles", "raid-hours"}
-
-# Event feed eventType values that go to the "Max" webhook instead of the
-# general events one.
-MAX_EVENT_TYPES = {"max-mondays", "max-battles"}
 
 
 # ---------------------------------------------------------------------------
@@ -87,10 +65,6 @@ def load_json(path, default):
 def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
-
-
-def normalize(name: str) -> str:
-    return name.strip().lower()
 
 
 def fetch_json(url: str, user_agent: str):
@@ -130,99 +104,45 @@ def get_webhook(env_name, config_key, config, label):
 
 
 # ---------------------------------------------------------------------------
-# 1. Raid boss watchlist
+# Settings (everything comes from config.json)
 # ---------------------------------------------------------------------------
 
-def build_raid_embed(boss):
-    tier = boss.get("tier", "")
-    cp = boss.get("combatPower", {})
-    normal = cp.get("normal", {})
-    boosted = cp.get("boosted", {})
-    types = ", ".join(t["name"].title() for t in boss.get("types", []))
-    shiny = "✨ Can be shiny" if boss.get("canBeShiny") else "No shiny yet"
-
-    fields = [
-        {"name": "Tier", "value": TIER_EMOJI.get(tier, tier), "inline": True},
-        {"name": "Type", "value": types or "Unknown", "inline": True},
-        {"name": "Shiny", "value": shiny, "inline": True},
-    ]
-    if normal:
-        fields.append({
-            "name": "CP (normal / weather boosted)",
-            "value": f"{normal.get('min','?')}–{normal.get('max','?')} / "
-                     f"{boosted.get('min','?')}–{boosted.get('max','?')}",
-            "inline": False,
-        })
+def load_settings(config):
+    event_types = {str(k): bool(v) for k, v in (config.get("event_types") or {}).items()}
+    if not event_types:
+        print("WARNING: config.json has no 'event_types' - only "
+              "'notify_unknown_event_types' will decide what gets sent.")
 
     return {
-        "title": f"{boss['name']} is now in raids!",
-        "color": 0xE74C3C,
-        "fields": fields,
-        "thumbnail": {"url": boss.get("image", "")},
-        "footer": {"text": "Data: ScrapedDuck (LeekDuck.com)"},
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "event_types": event_types,
+        "notify_unknown": bool(config.get("notify_unknown_event_types", True)),
+        "override_types": set(config.get("keyword_override_types") or []),
+        "keywords": tuple(str(k).lower() for k in (config.get("keep_name_keywords") or [])),
     }
 
 
-def check_raid_bosses(config, webhook_url):
-    if not webhook_url:
-        return
+def should_notify(event, settings, unknown_seen):
+    etype = event.get("eventType")
+    subs = settings["event_types"]
 
-    env_watchlist = os.environ.get("WATCH_POKEMON")
-    if env_watchlist:
-        raw_list = [n for n in env_watchlist.split(",") if n.strip()]
-    else:
-        raw_list = config.get("watch_pokemon", [])
-    watchlist = [normalize(n) for n in raw_list]
+    if etype not in subs:
+        unknown_seen.add(etype)
+        return settings["notify_unknown"]
 
-    if not watchlist:
-        print("Raid bosses: watch_pokemon list is empty - nothing to check.")
-        return
+    if subs[etype]:
+        return True
 
-    notify_on_leave = os.environ.get("NOTIFY_WHEN_LEAVES", "").lower() in ("1", "true", "yes") \
-        or config.get("notify_when_leaves", False)
+    # Type is switched off - still allow events whose name matches a keyword
+    # (e.g. Gigantamax/Dynamax days and hours), for the configured types only.
+    if etype in settings["override_types"]:
+        name = (event.get("name") or "").lower()
+        return any(k in name for k in settings["keywords"])
 
-    try:
-        raids = fetch_json(RAIDS_URL, "raid-notifier/1.0")
-    except Exception as e:
-        print(f"Raid bosses: failed to fetch raid data: {e}")
-        return
-
-    current_names = {normalize(b["name"]) for b in raids}
-    seen = set(load_json(SEEN_PATH, []))
-
-    newly_active = [b for b in raids if normalize(b["name"]) in watchlist
-                     and normalize(b["name"]) not in seen]
-
-    for boss in newly_active:
-        try:
-            send_discord_message(
-                webhook_url,
-                content=f"🚨 **{boss['name']}** is in raids right now!",
-                embeds=[build_raid_embed(boss)],
-            )
-            print(f"Raid bosses: notified {boss['name']}")
-        except Exception as e:
-            print(f"Raid bosses: failed to send message for {boss['name']}: {e}")
-
-    if notify_on_leave:
-        left = [n for n in watchlist if n in seen and n not in current_names]
-        for name in left:
-            try:
-                send_discord_message(webhook_url, content=f"👋 **{name.title()}** has left raids.")
-                print(f"Raid bosses: notified (left) {name}")
-            except Exception as e:
-                print(f"Raid bosses: failed to send leave notice for {name}: {e}")
-
-    new_seen = {normalize(b["name"]) for b in raids if normalize(b["name"]) in watchlist}
-    save_json(SEEN_PATH, sorted(new_seen))
-
-    if not newly_active:
-        print("Raid bosses: no new watched raid bosses this run.")
+    return False
 
 
 # ---------------------------------------------------------------------------
-# 2. Events (everything except raid-battles / raid-hours)
+# Events
 # ---------------------------------------------------------------------------
 
 def parse_dt(value, local_tz):
@@ -264,7 +184,6 @@ def build_event_embed(event, kind):
     fields = [{"name": "Type", "value": event.get("heading") or event.get("eventType", ""), "inline": True}]
     if bosses:
         fields.append({"name": "Bosses", "value": ", ".join(bosses), "inline": False})
-
     started = kind == "started"
     return {
         "title": f"{event['name']} has {'started' if started else 'ended'}!",
@@ -277,9 +196,11 @@ def build_event_embed(event, kind):
     }
 
 
-def check_events(config, webhook_raids, webhook_max, webhook_events):
-    if not webhook_raids and not webhook_max and not webhook_events:
+def check_events(config, webhook_url):
+    if not webhook_url:
         return
+
+    settings = load_settings(config)
 
     tz_name = os.environ.get("EVENT_TIMEZONE") or config.get("event_timezone")
     local_tz = None
@@ -295,21 +216,15 @@ def check_events(config, webhook_raids, webhook_max, webhook_events):
         print(f"Events: failed to fetch event data: {e}")
         return
 
+    unknown_seen = set()
     now = datetime.now(timezone.utc)
     state = load_json(EVENTS_STATE_PATH, {})
     notified_any = False
     current_ids = set()
 
     for event in events:
-        event_type = event.get("eventType")
-        if event_type in RAID_EVENT_TYPES:
-            webhook_url = webhook_raids
-        elif event_type in MAX_EVENT_TYPES:
-            webhook_url = webhook_max
-        else:
-            webhook_url = webhook_events
-        if not webhook_url:
-            continue  # that destination isn't configured - skip quietly
+        if not should_notify(event, settings, unknown_seen):
+            continue
 
         event_id = event.get("eventID")
         if not event_id:
@@ -360,6 +275,10 @@ def check_events(config, webhook_raids, webhook_max, webhook_events):
 
     save_json(EVENTS_STATE_PATH, state)
 
+    if unknown_seen:
+        print(f"Events: unlisted event types seen: {sorted(t for t in unknown_seen if t)}. "
+              f"Add them to 'event_types' in config.json to control them.")
+
     if not notified_any:
         print("Events: no start/end transitions this run.")
 
@@ -369,17 +288,14 @@ def check_events(config, webhook_raids, webhook_max, webhook_events):
 def main():
     config = load_json(CONFIG_PATH, {})
 
-    webhook_raids = get_webhook("DISCORD_WEBHOOK_URL", "discord_webhook_url", config, "raid boss")
-    webhook_max = get_webhook("DISCORD_WEBHOOK_URL_MAX", "discord_webhook_url_max", config, "Max Battles")
-    webhook_events = get_webhook("DISCORD_WEBHOOK_URL_EVENTS", "discord_webhook_url_events", config, "general events")
+    webhook_url = get_webhook("DISCORD_WEBHOOK_URL_EVENTS", "discord_webhook_url_events", config, "events")
 
-    if not (webhook_raids or webhook_max or webhook_events):
-        print("No valid webhook URLs configured at all (DISCORD_WEBHOOK_URL, "
-              "DISCORD_WEBHOOK_URL_MAX, DISCORD_WEBHOOK_URL_EVENTS). Nothing to do.")
+    if not webhook_url:
+        print("No valid webhook URL configured (set DISCORD_WEBHOOK_URL_EVENTS or "
+              "'discord_webhook_url_events' in config.json). Nothing to do.")
         sys.exit(1)
 
-    check_raid_bosses(config, webhook_raids)
-    check_events(config, webhook_raids, webhook_max, webhook_events)
+    check_events(config, webhook_url)
 
 
 if __name__ == "__main__":
