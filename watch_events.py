@@ -13,10 +13,10 @@ Everything configurable lives in config.json next to this script:
     keyword_override_types       disabled types that may still let events through...
     keep_name_keywords           ...when the event name contains one of these
     event_timezone               IANA tz for events without a "Z" timestamp
-    discord_webhook_url_events   the single Discord webhook all events are sent to
+    discord_webhook_url          the single Discord webhook all events are sent to
 
 The webhook URL and the timezone can also be set via the environment variables
-DISCORD_WEBHOOK_URL_EVENTS and EVENT_TIMEZONE (these take priority over
+DISCORD_WEBHOOK_URL and EVENT_TIMEZONE (these take priority over
 config.json). All subscribed events, whatever their type, go to that one webhook.
 
 State is kept next to the script in events_state.json (start/end transitions).
@@ -288,11 +288,11 @@ def check_events(config, webhook_url):
 def main():
     config = load_json(CONFIG_PATH, {})
 
-    webhook_url = get_webhook("DISCORD_WEBHOOK_URL_EVENTS", "discord_webhook_url_events", config, "events")
+    webhook_url = get_webhook("DISCORD_WEBHOOK_URL", "discord_webhook_url", config, "events")
 
     if not webhook_url:
-        print("No valid webhook URL configured (set DISCORD_WEBHOOK_URL_EVENTS or "
-              "'discord_webhook_url_events' in config.json). Nothing to do.")
+        print("No valid webhook URL configured (set DISCORD_WEBHOOK_URL or "
+              "'discord_webhook_url' in config.json). Nothing to do.")
         sys.exit(1)
 
     check_events(config, webhook_url)
