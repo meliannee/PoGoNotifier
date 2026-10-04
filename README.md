@@ -1,93 +1,117 @@
-# Pokémon GO Raid Watcher → Discord
+# PoGoNotifier (events only)
+Please note that this README was automatically written by AI. For any misinformation please inform me using github's Issues page.
 
-Pings a Discord channel only when a Pokémon **you choose** shows up as a raid boss
-(any tier: 1★, 3★, 5★, Mega, or Shadow — whatever's in the feed).
+Posts a message to Discord when a Pokémon GO event **starts** and when it **ends**.
+You choose which event types you care about in `config.json`.
 
-Data source: [ScrapedDuck](https://github.com/bigfoott/ScrapedDuck), a community
-project that scrapes LeekDuck.com *with permission* and republishes it as JSON.
-It's free to use as long as you don't put it behind a paywall or monetize it with
-ads, and you credit ScrapedDuck + LeekDuck.com (this script's Discord embeds
-already do that in the footer).
+This branch (`feature/only_notify_events`) only deals with events. There is no
+raid boss watchlist: regular raids and regular Max Battle listings are off by
+default, while raid hours and Gigantamax/Dynamax days and hours still come through.
 
-## 1. Create a Discord webhook
-
-1. In Discord, go to the channel you want alerts in → **Edit Channel** → **Integrations** → **Webhooks** → **New Webhook**.
-2. Name it (e.g. "Raid Alerts"), copy the **Webhook URL**.
-
-## 2. Configure your watchlist
-
-1. Copy `config.example.json` to `config.json`.
-2. Paste your webhook URL into `discord_webhook_url`.
-3. Add the Pokémon you want alerts for into `watch_pokemon`.
-   - Run `python3 list_current_bosses.py` once to see the *exact* names the
-     feed uses right now (e.g. it's `"Mega Venusaur"`, not `"Venusaur"` with a
-     separate "mega" flag — the tier and name are combined for Megas).
-   - Names not currently in raids won't show in that list — for those, just
-     use the Pokémon's normal name (e.g. `"Zacian"`); it'll match once it
-     rotates in.
-4. Optional: set `"notify_when_leaves": true` if you also want a message when
-   a watched Pokémon rotates *out* of raids.
-
-## 3. Test it once
-
-```bash
-pip install --break-system-packages -r requirements.txt   # (stdlib only, but harmless if you keep this)
-python3 watch_raids.py
-```
-
-You should see either "Notified: X" for anything on your list that's
-currently active, or "No new watched raid bosses this run."
-
-## 4. Schedule it
-
-The script is stateless between runs except for `seen.json` (so you only get
-notified once per rotation, not every 10 minutes). Pick whichever scheduler
-fits how you already work:
-
-### Option A — GitHub Actions (recommended: free, nothing to keep running)
-
-1. Push this folder to a GitHub repo (public is fine now — no secrets are
-   committed). **Don't commit `config.json`** for this option; the workflow
-   reads settings from repo secrets/variables instead.
-2. In the repo, go to **Settings → Secrets and variables → Actions**:
-   - Add a **secret** named `DISCORD_WEBHOOK_URL` with your webhook URL.
-   - Add a **variable** named `WATCH_POKEMON` with a comma-separated list,
-     e.g. `Zacian,Mega Venusaur,Xerneas`.
-3. The included `.github/workflows/raid-check.yml` runs every 15 minutes
-   automatically and commits `seen.json` back so state persists between runs.
-4. You can trigger it manually anytime from the repo's **Actions** tab
-   (workflow_dispatch) to test it.
-
-### Option B — Your own computer (cron / Task Scheduler)
-
-- **Mac/Linux (cron)**: `crontab -e`, add:
-  ```
-  */15 * * * * cd /path/to/raid-notifier && /usr/bin/python3 watch_raids.py >> run.log 2>&1
-  ```
-- **Windows (Task Scheduler)**: create a task that runs
-  `python watch_raids.py` every 15 minutes, with "Start in" set to this
-  folder.
-
-Your computer needs to be on for Option B to fire; Option A runs in the cloud
-regardless.
+Data comes from the community-run [ScrapedDuck](https://github.com/bigfoott/ScrapedDuck)
+feed, which scrapes [LeekDuck.com](https://leekduck.com) with permission.
+Please keep that attribution if you share this project.
 
 ## Files
 
 | File | Purpose |
-|---|---|
-| `watch_raids.py` | Main script — checks feed, sends Discord alerts |
-| `list_current_bosses.py` | One-off helper to see exact current boss names |
-| `config.example.json` | Template — copy to `config.json` and fill in |
-| `seen.json` | Auto-created; tracks what's already been notified |
-| `.github/workflows/raid-check.yml` | GitHub Actions schedule (Option A) |
+|------|---------|
+| `watch_events.py` | The watcher. Fetches the events feed and posts to Discord. |
+| `config.json` | All settings: subscriptions, routing, timezone, webhook URLs. |
+| `events_state.json` | Remembers which start/end messages were already sent. Updated automatically. |
+| `.github/workflows/event-check.yml` | Runs the watcher every 15 minutes on GitHub Actions. |
 
-## Notes
+## Setup
 
-- The feed only lists what's **currently** live in raids, not future
-  rotations — so you'll get pinged when your Pokémon *actually* enters raids,
-  not in advance. If you want advance warning too, I can also wire up a check
-  against LeekDuck's events calendar (upcoming rotations) — just ask.
-- This is about the **rotation schedule** (which Pokémon are raid bosses
-  right now), not live per-gym raid alerts near you — that requires
-  real-time scanner data, which isn't something I can build against, since it
-  generally violates Niantic's terms of service.
+1. **Create Discord webhooks.** In your Discord server: channel settings →
+   Integrations → Webhooks → New Webhook → copy the URL. You can use one, two or
+   three channels (see *Routing* below).
+2. **Add the webhook URLs as repository secrets** (Settings → Secrets and
+   variables → Actions → New repository secret):
+   - `DISCORD_WEBHOOK_URL` (raid hours / raid days)
+   - `DISCORD_WEBHOOK_URL_MAX` (Max Mondays / Max Battles)
+   - `DISCORD_WEBHOOK_URL_EVENTS` (all other events)
+
+   Any of them can be left out; events routed to a missing webhook are skipped.
+   Don't put real webhook URLs in `config.json` if the repository is public.
+3. **Optional:** add a repository variable `EVENT_TIMEZONE` (for example
+   `Europe/Amsterdam`). Some events have local start/end times without a UTC
+   marker; this tells the script which timezone they are in. Without it, UTC is assumed.
+4. **Edit `config.json`** to pick your event types (see below).
+5. **Enable Actions** for the repository. The workflow runs every 15 minutes and
+   can also be started by hand from the Actions tab ("Run workflow").
+
+> GitHub only runs scheduled workflows from the repository's **default branch**.
+> On this feature branch, start the workflow manually until you merge it.
+> The workflow needs write access to commit `events_state.json`
+> (Settings → Actions → General → Workflow permissions, if your repo restricts it).
+
+## Configuration (`config.json`)
+
+| Key | Meaning |
+|-----|---------|
+| `event_types` | `{"<eventType>": true/false}`. `true` = notify, `false` = skip. |
+| `notify_unknown_event_types` | What to do with an event type that is not listed in `event_types`. `false` = ignore it, `true` = notify. The run output lists any unlisted types it saw. |
+| `keyword_override_types` | Event types that are switched off but may still let events through (default: `raid-battles`, `max-battles`). |
+| `keep_name_keywords` | If a type from `keyword_override_types` is `false`, events whose name contains one of these words are still sent (default: gigantamax, dynamax, max battle day, max monday). |
+| `raid_event_types` | Event types sent to the raid webhook. |
+| `max_event_types` | Event types sent to the Max webhook. |
+| `event_timezone` | IANA timezone name, e.g. `Europe/Amsterdam`. Empty = UTC. |
+| `discord_webhook_url`, `discord_webhook_url_max`, `discord_webhook_url_events` | Webhook URLs. Environment variables / secrets take priority. |
+
+Example: only get community days and raid hours, and ignore everything else:
+
+```json
+{
+  "event_types": {
+    "community-day": true,
+    "raid-hour": true
+  },
+  "notify_unknown_event_types": false
+}
+```
+
+### Routing
+
+| eventType in… | Goes to |
+|---------------|---------|
+| `raid_event_types` | `DISCORD_WEBHOOK_URL` |
+| `max_event_types` | `DISCORD_WEBHOOK_URL_MAX` |
+| anything else | `DISCORD_WEBHOOK_URL_EVENTS` |
+
+### Event type names
+
+The names in `event_types` have to match the `eventType` values in the feed.
+The list in `config.json` is a best guess, so check it against the live feed:
+
+```python
+import json, urllib.request
+req = urllib.request.Request(
+    "https://raw.githubusercontent.com/bigfoott/ScrapedDuck/data/events.json",
+    headers={"User-Agent": "pogo-notifier/1.0"})
+events = json.load(urllib.request.urlopen(req))
+print(sorted({e["eventType"] for e in events}))
+```
+
+## Running locally
+
+```bash
+export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
+python watch_events.py
+```
+
+Run it on a schedule with cron or Task Scheduler if you don't use GitHub Actions.
+Python 3.9+ is required, and there are no third-party dependencies.
+
+## How it works
+
+On every run the script fetches the feed, skips event types you have not
+subscribed to, and compares each remaining event with `events_state.json`.
+It sends a "started" message once an event is active and an "ended" message once
+it is over, then records that in the state file so nothing is sent twice.
+Finished events that have dropped out of the feed are removed from the state file.
+
+## Credit
+
+Event data: [ScrapedDuck](https://github.com/bigfoott/ScrapedDuck) by bigfoott,
+sourced from [LeekDuck.com](https://leekduck.com).
