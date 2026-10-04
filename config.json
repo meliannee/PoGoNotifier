@@ -1,0 +1,29 @@
+{
+  "discord_webhook_url": "https://discord.com/api/webhooks/XXXXXXXXXXXX/XXXXXXXXXXXX",
+
+  "event_timezone": "",
+
+  "event_types": {
+    "community-day": true,
+    "spotlight-hour": true,
+    "raid-hour": true,
+    "raid-day": true,
+    "max-mondays": true,
+    "pokemon-go-fest": true,
+    "go-battle-league": false,
+    "go-rocket-takeover": true,
+    "research-day": true,
+    "timed-research": true,
+    "pokestop-showcase": true,
+    "season": true,
+    "event": true,
+    "live-event": true,
+    "raid-battles": true,
+    "max-battles": true
+  },
+
+  "notify_unknown_event_types": true,
+
+  "keyword_override_types": ["raid-battles", "max-battles"],
+  "keep_name_keywords": ["gigantamax", "dynamax", "max battle day", "max monday"]
+}
