@@ -16,7 +16,7 @@
   },
   "max-mondays-2026-10-05": {
     "name": "Dynamax Sizzlipede during Max Monday",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "go-pass-september-2026": {
