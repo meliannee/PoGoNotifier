@@ -1,9 +1,4 @@
 {
-  "gigantamax-cinderace-max-battle-day-2026": {
-    "name": "Gigantamax Cinderace Max Battle Day",
-    "notified_start": true,
-    "notified_end": true
-  },
   "harvest-festival-2026": {
     "name": "Harvest Festival 2026: Applin Picking",
     "notified_start": true,
@@ -130,7 +125,7 @@
     "notified_end": false
   },
   "halloween-2026-part-1": {
-    "name": "Halloween 2026 Part I",
+    "name": "Pok\u00e9mon GO Halloween 2026 Part I",
     "notified_start": false,
     "notified_end": false
   },
