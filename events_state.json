@@ -17,7 +17,7 @@
   "go-pass-september-2026": {
     "name": "GO Pass: September",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "gbl-twilight-trails_master-league_mega-color-cup-great-league-edition": {
     "name": "Master League and Mega Color Cup: Great League Edition | Twilight Trails",
@@ -251,7 +251,7 @@
   },
   "go-pass-october-2026": {
     "name": "GO Pass: October",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-go-tour-alola-kaohsiung-2027": {
