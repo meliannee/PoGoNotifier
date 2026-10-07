@@ -1,14 +1,4 @@
 {
-  "harvest-festival-2026": {
-    "name": "Harvest Festival 2026: Applin Picking",
-    "notified_start": true,
-    "notified_end": true
-  },
-  "harvest-festival-taken-over-2026": {
-    "name": "Harvest Festival: Taken Over",
-    "notified_start": true,
-    "notified_end": true
-  },
   "max-mondays-2026-10-05": {
     "name": "Dynamax Sizzlipede during Max Monday",
     "notified_start": true,
