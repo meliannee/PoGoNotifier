@@ -6,7 +6,7 @@
   },
   "october-communityday2026": {
     "name": "Zorua Community Day",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "world-space-week-2026": {
