@@ -1,9 +1,4 @@
 {
-  "pokemonspotlighthour2026-10-08": {
-    "name": "Elgyem Spotlight Hour",
-    "notified_start": true,
-    "notified_end": true
-  },
   "october-communityday2026": {
     "name": "Zorua Community Day",
     "notified_start": true,
@@ -12,7 +7,7 @@
   "world-space-week-2026": {
     "name": "World Space Week 2026",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "max-mondays-2026-10-12": {
     "name": "Dynamax Rookidee during Max Monday",
