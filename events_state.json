@@ -11,7 +11,7 @@
   },
   "max-mondays-2026-10-12": {
     "name": "Dynamax Rookidee during Max Monday",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "gbl-twilight-trails_great-league-mega-edition_ultra-league-mega-edition_master-league-mega-edition-split-2": {
