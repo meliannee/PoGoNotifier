@@ -26,7 +26,7 @@
   },
   "fall-marathon-buddy-trek-2026": {
     "name": "Fall Marathon: Buddy Trek",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-10-19": {
