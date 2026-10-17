@@ -216,7 +216,7 @@
   },
   "sandile-hatch-day-2026": {
     "name": "Sandile Hatch Day",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-tcg-30th-celebration": {
