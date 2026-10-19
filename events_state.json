@@ -209,11 +209,6 @@
     "notified_start": true,
     "notified_end": false
   },
-  "sandile-hatch-day-2026": {
-    "name": "Sandile Hatch Day",
-    "notified_start": true,
-    "notified_end": true
-  },
   "pokemon-tcg-30th-celebration": {
     "name": "Pok\u00e9mon TCG: 30th Celebration",
     "notified_start": true,
@@ -221,7 +216,7 @@
   },
   "minior-showers-orionids-2026": {
     "name": "Minior Showers: Orionids 2026",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "minior-showers-leonids-2026": {
