@@ -333,5 +333,10 @@
     "name": "Dynamax Cryogonal during Max Monday",
     "notified_start": false,
     "notified_end": false
+  },
+  "go-pass-november-2026": {
+    "name": "GO Pass: November",
+    "notified_start": false,
+    "notified_end": false
   }
 }
