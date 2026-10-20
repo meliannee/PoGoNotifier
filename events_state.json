@@ -268,5 +268,70 @@
     "name": "Into the Wild",
     "notified_start": false,
     "notified_end": false
+  },
+  "pokemon-night-out-los-angeles-2026": {
+    "name": "Pok\u00e9mon Night Out 2026 - Los Angeles",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-11-02": {
+    "name": "Dynamax Machop during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "raidhour20261104": {
+    "name": "Giratina (Altered Forme) Raid Hour",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemonspotlighthour2026-11-05": {
+    "name": "Teddiursa wearing a witch hat Spotlight Hour",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemon-night-out-london-2026": {
+    "name": "Pok\u00e9mon Night Out 2026 - London",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-11-16": {
+    "name": "Max Monday: Pok\u00e9mon to be announced",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "raidhour20261118": {
+    "name": "Cresselia and Darkrai Raid Hour",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "dynamax-trails-2026": {
+    "name": "Dynamax Trails",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-11-23": {
+    "name": "Dynamax Espurr during Max Monday",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "raidhour20261125": {
+    "name": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemonspotlighthour2026-11-26": {
+    "name": "Noibat Spotlight Hour",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "twilight-wishes-2026": {
+    "name": "Twilight Wishes",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-mondays-2026-11-30": {
+    "name": "Dynamax Cryogonal during Max Monday",
+    "notified_start": false,
+    "notified_end": false
   }
 }
