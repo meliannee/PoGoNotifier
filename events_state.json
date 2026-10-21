@@ -22,7 +22,7 @@
   "raidhour20261021": {
     "name": "Palkia Raid Hour",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemonspotlighthour2026-10-22": {
     "name": "Morelull Spotlight Hour",
