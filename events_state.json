@@ -222,7 +222,7 @@
   "pokemon-night-out-2026-twitch-drops": {
     "name": "Twitch Drops for Pok\u00e9mon Night Out 2026",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "chandelure-super-mega-raid-day-2026": {
     "name": "Chandelure Super Mega Raid Day",
@@ -242,7 +242,7 @@
   "pokemon-night-out-los-angeles-2026": {
     "name": "Pok\u00e9mon Night Out 2026 - Los Angeles",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "max-mondays-2026-11-02": {
     "name": "Dynamax Machop during Max Monday",
