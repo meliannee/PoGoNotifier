@@ -232,7 +232,7 @@
   "pokemon-go-city-safari-boston-2026-rescheduled": {
     "name": "Pok\u00e9mon GO City Safari: Boston (Rescheduled)",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "into-the-wild-2026": {
     "name": "Into the Wild",
