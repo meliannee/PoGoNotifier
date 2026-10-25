@@ -187,7 +187,7 @@
   "minior-showers-orionids-2026": {
     "name": "Minior Showers: Orionids 2026",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "minior-showers-leonids-2026": {
     "name": "Minior Showers: Leonids 2026",
@@ -221,7 +221,7 @@
   },
   "pokemon-night-out-2026-twitch-drops": {
     "name": "Twitch Drops for Pok\u00e9mon Night Out 2026",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "chandelure-super-mega-raid-day-2026": {
@@ -241,7 +241,7 @@
   },
   "pokemon-night-out-los-angeles-2026": {
     "name": "Pok\u00e9mon Night Out 2026 - Los Angeles",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-11-02": {
