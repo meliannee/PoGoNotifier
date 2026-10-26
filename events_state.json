@@ -11,7 +11,7 @@
   },
   "max-mondays-2026-10-26": {
     "name": "Dynamax Sableye during Max Monday",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "gbl-twilight-trails_ultra-league_master-league-mega-edition_fantasy-cup-great-league-edition": {
