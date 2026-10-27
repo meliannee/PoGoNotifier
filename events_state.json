@@ -184,11 +184,6 @@
     "notified_start": true,
     "notified_end": false
   },
-  "minior-showers-orionids-2026": {
-    "name": "Minior Showers: Orionids 2026",
-    "notified_start": true,
-    "notified_end": true
-  },
   "minior-showers-leonids-2026": {
     "name": "Minior Showers: Leonids 2026",
     "notified_start": false,
