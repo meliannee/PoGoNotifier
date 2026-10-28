@@ -9,11 +9,6 @@
     "notified_start": false,
     "notified_end": false
   },
-  "max-mondays-2026-10-26": {
-    "name": "Dynamax Sableye during Max Monday",
-    "notified_start": true,
-    "notified_end": true
-  },
   "gbl-twilight-trails_ultra-league_master-league-mega-edition_fantasy-cup-great-league-edition": {
     "name": "Ultra League, Master League: Mega Edition, and Fantasy Cup: Great League Edition | Twilight Trails",
     "notified_start": true,
@@ -281,6 +276,16 @@
   },
   "go-pass-november-2026": {
     "name": "GO Pass: November",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "pokemonspotlighthour2026-11-19": {
+    "name": "Grookey, Scorbunny, and Sobble Spotlight Hour",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "eternamax-eternatus-max-battles-2026": {
+    "name": "Eternamax Eternatus Returns",
     "notified_start": false,
     "notified_end": false
   }
