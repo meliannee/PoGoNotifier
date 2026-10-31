@@ -9,16 +9,6 @@
     "notified_start": false,
     "notified_end": false
   },
-  "raidhour20261028": {
-    "name": "Giratina (Origin Forme) Raid Hour",
-    "notified_start": true,
-    "notified_end": true
-  },
-  "pokemonspotlighthour2026-10-29": {
-    "name": "Gastly Spotlight Hour",
-    "notified_start": true,
-    "notified_end": true
-  },
   "super-mega-raid-day-october-2026": {
     "name": "Super Mega Raid Day",
     "notified_start": false,
