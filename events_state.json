@@ -192,7 +192,7 @@
   "chandelure-super-mega-raid-day-2026": {
     "name": "Chandelure Super Mega Raid Day",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "into-the-wild-2026": {
     "name": "Into the Wild",
