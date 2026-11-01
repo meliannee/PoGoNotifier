@@ -17,7 +17,7 @@
   "halloween-2026-part-1": {
     "name": "Pok\u00e9mon GO Halloween 2026 Part I",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "gbl-twilight-trails_master-league_mega-halloween-cup-great-league-edition": {
     "name": "Master League and Mega Halloween Cup: Great League Edition | Twilight Trails",
@@ -26,7 +26,7 @@
   },
   "halloween-2026-part-2": {
     "name": "Pok\u00e9mon GO Halloween 2026 Part II",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-go-wild-area-2026-sendai-japan": {
