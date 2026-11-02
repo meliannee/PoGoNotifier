@@ -197,7 +197,7 @@
   "max-mondays-2026-11-02": {
     "name": "Dynamax Machop during Max Monday",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "raidhour20261104": {
     "name": "Giratina (Altered Forme) Raid Hour",
