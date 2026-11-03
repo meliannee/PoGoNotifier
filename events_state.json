@@ -137,7 +137,7 @@
   "go-pass-october-2026": {
     "name": "GO Pass: October",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemon-go-tour-alola-kaohsiung-2027": {
     "name": "Pok\u00e9mon GO Tour: Alola - Kaohsiung 2027",
@@ -251,7 +251,7 @@
   },
   "go-pass-november-2026": {
     "name": "GO Pass: November",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemonspotlighthour2026-11-19": {
