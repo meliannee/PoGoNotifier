@@ -197,7 +197,7 @@
   "raidhour20261104": {
     "name": "Giratina (Altered Forme) Raid Hour",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "pokemonspotlighthour2026-11-05": {
     "name": "Teddiursa wearing a witch hat Spotlight Hour",
