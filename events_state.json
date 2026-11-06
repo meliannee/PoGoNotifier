@@ -21,7 +21,7 @@
   },
   "pokemon-go-wild-area-2026-sendai-japan": {
     "name": "Pok\u00e9mon GO Wild Area 2026: Sendai \u2022 Tohoku",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-go-wild-area-2026-mexico-city": {
@@ -246,6 +246,16 @@
   },
   "eternamax-eternatus-max-battles-2026": {
     "name": "Eternamax Eternatus Returns",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "go-wild-area-gigantamax-machamp-power-up-timed-research": {
+    "name": "GO Wild Area: Gigantamax Machamp Power Up! Timed Research",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "clefable-super-mega-raid-day-2026": {
+    "name": "Clefable Super Mega Raid Day",
     "notified_start": false,
     "notified_end": false
   }
