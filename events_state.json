@@ -251,7 +251,7 @@
   },
   "go-wild-area-gigantamax-machamp-power-up-timed-research": {
     "name": "GO Wild Area: Gigantamax Machamp Power Up! Timed Research",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "clefable-super-mega-raid-day-2026": {
