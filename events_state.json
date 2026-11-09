@@ -171,7 +171,7 @@
   },
   "into-the-wild-2026": {
     "name": "Into the Wild 2026",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "pokemon-night-out-london-2026": {
