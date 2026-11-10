@@ -176,7 +176,7 @@
   },
   "pokemon-night-out-london-2026": {
     "name": "Pok\u00e9mon Night Out 2026 - London",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-11-16": {
