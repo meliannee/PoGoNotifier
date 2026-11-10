@@ -243,5 +243,60 @@
     "name": "Clefable Super Mega Raid Day",
     "notified_start": false,
     "notified_end": false
+  },
+  "max-battle-day-december-2026": {
+    "name": "Max Battle Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "december-communityday2026": {
+    "name": "December Community Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "raid-day-december-2026": {
+    "name": "Raid Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "hatch-day-december-2026": {
+    "name": "Hatch Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "january-communitydayclassic2027": {
+    "name": "January Community Day Classic",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "super-mega-raid-day-january-2027": {
+    "name": "Super Mega Raid Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "january-communityday2027": {
+    "name": "January Community Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "max-battle-day-january-2027": {
+    "name": "Max Battle Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "super-mega-raid-day-january-30-2027": {
+    "name": "Super Mega Raid Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "february-communityday2027": {
+    "name": "February Community Day",
+    "notified_start": false,
+    "notified_end": false
+  },
+  "raid-day-february-2027": {
+    "name": "Raid Day",
+    "notified_start": false,
+    "notified_end": false
   }
 }
