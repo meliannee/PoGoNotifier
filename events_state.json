@@ -161,7 +161,7 @@
   },
   "max-mondays-2026-11-16": {
     "name": "Max Monday: Pok\u00e9mon to be announced",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "raidhour20261118": {
@@ -217,7 +217,7 @@
   "go-wild-area-gigantamax-machamp-power-up-timed-research": {
     "name": "GO Wild Area: Gigantamax Machamp Power Up! Timed Research",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "clefable-super-mega-raid-day-2026": {
     "name": "Clefable Super Mega Raid Day",
