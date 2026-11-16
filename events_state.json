@@ -162,7 +162,7 @@
   "max-mondays-2026-11-16": {
     "name": "[Canceled] Max Monday",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "raidhour20261118": {
     "name": "Cresselia and Darkrai Raid Hour",
