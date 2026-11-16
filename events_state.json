@@ -171,7 +171,7 @@
   },
   "dynamax-trails-2026": {
     "name": "Dynamax Trails",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-11-23": {
