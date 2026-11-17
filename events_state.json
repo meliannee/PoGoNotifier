@@ -278,5 +278,10 @@
     "name": "Raid Day",
     "notified_start": false,
     "notified_end": false
+  },
+  "duolingo-timed-research-2026": {
+    "name": "Pok\u00e9mon GO and Duolingo Timed Research",
+    "notified_start": false,
+    "notified_end": false
   }
 }
