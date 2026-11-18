@@ -162,7 +162,7 @@
   "raidhour20261118": {
     "name": "Cresselia and Darkrai Raid Hour",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "dynamax-trails-2026": {
     "name": "Dynamax Trails",
