@@ -202,7 +202,7 @@
   "pokemonspotlighthour2026-11-19": {
     "name": "Grookey, Scorbunny, and Sobble Spotlight Hour",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "eternamax-eternatus-max-battles-2026": {
     "name": "Eternamax Eternatus Returns",
