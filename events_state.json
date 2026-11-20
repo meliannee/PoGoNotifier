@@ -149,11 +149,6 @@
     "notified_start": true,
     "notified_end": false
   },
-  "raidhour20261118": {
-    "name": "Cresselia and Darkrai Raid Hour",
-    "notified_start": true,
-    "notified_end": true
-  },
   "dynamax-trails-2026": {
     "name": "Dynamax Trails",
     "notified_start": true,
@@ -261,6 +256,11 @@
   },
   "duolingo-timed-research-2026": {
     "name": "Pok\u00e9mon GO and Duolingo Timed Research",
+    "notified_start": true,
+    "notified_end": false
+  },
+  "pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": {
+    "name": "Twitch Drops for 2027 Pok\u00e9mon Latin America International Championships",
     "notified_start": true,
     "notified_end": false
   }
