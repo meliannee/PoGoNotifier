@@ -191,7 +191,7 @@
   },
   "eternamax-eternatus-max-battles-2026": {
     "name": "Eternamax Eternatus Returns",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "clefable-super-mega-raid-day-2026": {
