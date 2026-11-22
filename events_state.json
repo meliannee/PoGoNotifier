@@ -119,11 +119,6 @@
     "notified_start": true,
     "notified_end": false
   },
-  "minior-showers-leonids-2026": {
-    "name": "Minior Showers: Leonids 2026",
-    "notified_start": true,
-    "notified_end": true
-  },
   "minior-showers-geminids-2026": {
     "name": "Minior Showers: Geminids 2026",
     "notified_start": false,
@@ -183,11 +178,6 @@
     "name": "GO Pass: November",
     "notified_start": true,
     "notified_end": false
-  },
-  "pokemonspotlighthour2026-11-19": {
-    "name": "Grookey, Scorbunny, and Sobble Spotlight Hour",
-    "notified_start": true,
-    "notified_end": true
   },
   "eternamax-eternatus-max-battles-2026": {
     "name": "Eternamax Eternatus Returns",
