@@ -151,7 +151,7 @@
   },
   "max-mondays-2026-11-23": {
     "name": "Dynamax Espurr during Max Monday",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "raidhour20261125": {
@@ -252,6 +252,6 @@
   "pokemon-latin-america-international-championships-2027-timed-research-twitch-drops": {
     "name": "Twitch Drops for 2027 Pok\u00e9mon Latin America International Championships",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   }
 }
