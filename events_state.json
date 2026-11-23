@@ -147,7 +147,7 @@
   "max-mondays-2026-11-23": {
     "name": "Dynamax Espurr during Max Monday",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "raidhour20261125": {
     "name": "Deoxys (Normal, Defense, Attack, and Speed Formes) Raid Hour",
