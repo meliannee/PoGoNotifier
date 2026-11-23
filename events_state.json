@@ -14,11 +14,6 @@
     "notified_start": false,
     "notified_end": false
   },
-  "november-communityday2026": {
-    "name": "Pawniard Community Day",
-    "notified_start": true,
-    "notified_end": true
-  },
   "gbl-twilight-trails_ultra-league_master-league-mega-edition_2026-go-laic-cup": {
     "name": "Ultra League, Master League: Mega Edition, and 2026 GO LAIC Cup | Twilight Trails",
     "notified_start": true,
@@ -178,11 +173,6 @@
     "name": "GO Pass: November",
     "notified_start": true,
     "notified_end": false
-  },
-  "eternamax-eternatus-max-battles-2026": {
-    "name": "Eternamax Eternatus Returns",
-    "notified_start": true,
-    "notified_end": true
   },
   "clefable-super-mega-raid-day-2026": {
     "name": "Clefable Super Mega Raid Day",
