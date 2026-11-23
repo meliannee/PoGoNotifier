@@ -142,7 +142,7 @@
   "dynamax-trails-2026": {
     "name": "Dynamax Trails",
     "notified_start": true,
-    "notified_end": false
+    "notified_end": true
   },
   "max-mondays-2026-11-23": {
     "name": "Dynamax Espurr during Max Monday",
