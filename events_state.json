@@ -161,7 +161,7 @@
   },
   "twilight-wishes-2026": {
     "name": "Twilight Wishes",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-mondays-2026-11-30": {
