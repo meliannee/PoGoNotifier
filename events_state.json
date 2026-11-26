@@ -146,7 +146,7 @@
   },
   "pokemonspotlighthour2026-11-26": {
     "name": "Noibat Spotlight Hour",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "twilight-wishes-2026": {
