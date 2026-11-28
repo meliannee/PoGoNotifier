@@ -166,7 +166,7 @@
   },
   "clefable-super-mega-raid-day-2026": {
     "name": "Clefable Super Mega Raid Day",
-    "notified_start": false,
+    "notified_start": true,
     "notified_end": false
   },
   "max-battle-day-december-2026": {
